@@ -30,7 +30,8 @@ class Reader(driver.ScanDriver, CancellableThrowingThread):
     name = 'RFID Driver'
 
     def __init__(self, config, poller):
-        super(Reader, self).__init__(config, poller)
+        driver.ScanDriver.__init__(self, config, poller)
+        CancellableThrowingThread.__init__(self)
         self.threaded = True
         self.scannerConfig = config.config
 
